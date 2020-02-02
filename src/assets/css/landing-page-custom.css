@@ -1,0 +1,99 @@
+.nav-link-custom{
+    padding-left: 1vw !important;
+    padding-right: 1vw !important;
+}
+
+.clickable-icon{
+    cursor:pointer;
+}
+
+.ddiv{
+    display:flex;
+    justify-content: center;
+    margin:auto;
+    width:100vw;
+
+}
+.list-inline-item-custom{
+    display: table-cell;
+    vertical-align: middle;
+}
+.list-inline-item-custom i{
+    /* font-size: 2vw; */
+    cursor:pointer;
+
+}
+
+.list-inline-item-custom i:hover{
+    /* font-size: 50px; */
+
+    transition:0.5s;
+    color:rgb(0,123,255);
+}
+
+.languageDescriptionText{
+    font-size: 17px;
+}
+
+.techno-logo-div-bckImg{
+    background-size:contain !important;
+    background-repeat: no-repeat !important;
+    background-position:center !important;
+    background-size: 30% !important;
+}
+
+.btnChoiceQuotationMode{
+    transition:0.4s;
+    color:rgb(0,123,255) !important;
+    cursor: pointer;
+}
+
+.btnChoiceQuotationMode:hover{
+    transition:0.4s;
+    color:white !important;
+}
+
+.navbarMenuLink{
+    transition:0.4s;
+    text-decoration: none;
+    color:#3d444b !important;
+    
+
+}
+
+.navbarMenuLink:hover{
+    
+    transition:0.4s;
+    text-decoration: underline;
+    color:rgb(1,159,227) !important;
+    
+}
+
+.modal-content{
+    width:200% !important;
+    margin-left: -50%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    
+    padding-left:150px;
+    padding-right:150px;
+}
+
+.card{
+    min-height: 380px !important;
+}
+.selCard{
+    transition: 0.25s;
+    background-color: rgb(0,123,255);
+    color: white;
+    min-height: 380px !important;
+}
+
+.btn-hostingProvider{
+    color: white !important;
+    cursor:pointer;
+}
+
+.interactiveCard{
+    cursor:pointer;
+}

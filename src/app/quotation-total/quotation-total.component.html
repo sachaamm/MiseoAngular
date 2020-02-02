@@ -1,0 +1,15 @@
+<p>
+    <b>Prix du site :</b> {{ quotationAmount }} €
+</p>
+
+
+<div *ngIf="quotationStep >= 3 && quotationType == 0">
+    <p>
+        <b>Prix de l'hébergement :</b> {{ hostingAmount }} €
+    </p>
+
+    <p>
+        <b>Total TTC :</b> {{ limitDecimal(quotationAmount*1 + hostingAmount*1) }} €
+    </p>
+
+</div>

@@ -1,0 +1,529 @@
+<div *ngIf="name == 'World'">
+
+    <div class="modal-header">
+        <h4 class="modal-title">Hi there!</h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>This is the first step of the <b>quotation</b>, where client will
+            choose
+            additional options. Btw, you provided this arg : {{name}}!</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+
+
+</div>
+
+<div *ngIf="name == 'SiteVitrine-SelectionOptions'">
+
+    <div class="modal-header">
+        <h4 class="modal-title">Site vitrine</h4><small>Etape 1/4 : Sélection
+            des options</small>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="siteVitrine_needCMS"
+                    (change)="updateForm()" [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Je souhaite
+                    pouvoir ajouter/éditer/supprimer du contenu ultérieurement à
+                    la
+                    livraison du site</label>
+            </div>
+
+            <div class="form-check">
+                <p class="form-check-label" for="form-check-input">Nombre de pages <b>info</b></p>
+                <input class="form-control col-lg-3" type="number" min="1" max="99"
+                    placeholder="Nombre de pages pour votre site internet" value="1" [(ngModel)]="siteVitrine_nbPages"
+                    (change)="updateForm()" [ngModelOptions]="{standalone: true}" />
+
+            </div>
+
+            <div class="form-check">
+                <p class="form-check-label" for="form-check-input">Nombre de langages pris en charge <b>info</b></p>
+                <input class="form-control col-lg-3" type="number" min="1" max="99"
+                    placeholder="Nombre de pages pour votre site internet" value="1"
+                    [(ngModel)]="siteVitrine_nbLanguages" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+
+            </div>
+
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_clientGetsDesignMockup" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Je dispose
+                    de maquettes pour le design</label>
+            </div>
+
+            <div *ngIf="siteVitrine_clientGetsDesignMockup == false" class="form-check">
+                <p class="form-check-label" for="form-check-input">Indiquez nous un template de réference <b>info</b>
+                </p>
+                <input class="form-control" type="text" placeholder="Indiquez nous un template de réference"
+                    [(ngModel)]="siteVitrine_referenceTemplate" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+            </div>
+
+
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_facebookWidgets" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Boutons
+                    Facebook ( Like, Partage ) </label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_googleStreetMaps" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Google
+                    Street Maps </label>
+            </div>
+
+            <!--
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="siteVitrine_OpenGraph"
+                    (change)="updateForm()" [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Intégration
+                    OpenGraph</label>
+            </div>
+
+            -->
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_CommentairesClients" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Intégration
+                    de Commentaires Clients</label>
+            </div>
+
+
+            <app-quotation-total quotationAmount="{{quotationAmount}}" quotationStep="{{quotationStep}}"
+                quotationType="{{quotationType}}"></app-quotation-total>
+
+
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Suivant</button>
+    </div>
+
+
+</div>
+
+
+
+
+
+<div *ngIf="name == 'SiteVitrine-DefinitionRequiseOptions'">
+
+    <div class="modal-header">
+        <h4 class="modal-title">Site vitrine</h4><small>Etape 2/4 : Définition
+            des options</small>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_IGotMediaContentForDesign" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Je dispose d'images prêtes à être mises pour le
+                    site</label>
+            </div>
+
+
+
+            <div *ngIf="devisService.mtacFirstStep.siteVitrine_facebookWidgets == true" class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_IGotAFacebookAPI" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">J'ai une API Facebook pour les widgets</label>
+            </div>
+
+            <div *ngIf="siteVitrine_IGotAFacebookAPI" class="form-check">
+                <input class="form-control" type="text" placeholder="Indiquez nous vos identifiants d'API "
+                    id="exampleCheck1" [(ngModel)]="siteVitrine_clientFacebookAPI" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+
+
+            </div>
+
+            <div *ngIf="devisService.mtacFirstStep.siteVitrine_CommentairesClients == true" class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_commentsInPages" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Je souhaite intégrer des commentaires sur mes
+                    articles</label>
+            </div>
+
+
+            <div *ngIf="devisService.mtacFirstStep.siteVitrine_CommentairesClients == true" class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_commentsInArticle" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Je souhaite intégrer des commentaires sur mes
+                    pages</label>
+            </div>
+
+
+            <app-quotation-total quotationAmount="{{quotationAmount}}" quotationStep="{{quotationStep}}"
+                quotationType="{{quotationType}}"></app-quotation-total>
+
+
+
+
+
+        </form>
+
+
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Suivant</button>
+    </div>
+
+
+</div>
+
+
+<div *ngIf="name == 'SiteVitrine-Hebergement'">
+
+    <div class="modal-header">
+        <h4 class="modal-title">Site vitrine</h4><small>Etape 3/4 : Hébergement</small>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_IWishAnHosting" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Je souhaite un hébergement de mon site</label>
+            </div>
+
+            <div *ngIf="siteVitrine_IWishAnHosting == true" class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_IGetADomaineName" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">J'ai un nom de domaine</label>
+            </div>
+
+
+
+            <div *ngIf="siteVitrine_IWishAnHosting == true && siteVitrine_IGetADomaineName == false" class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_IKnowWhichDomainNameIWant" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">Je sais quel nom de domaine je souhaite
+                    réserver</label>
+            </div>
+
+            <!-- Vous n'avez pas de nom de domaine, entrez en un -->
+            <div *ngIf="siteVitrine_IKnowWhichDomainNameIWant == true && siteVitrine_IWishAnHosting == true && siteVitrine_IGetADomaineName == false"
+                class="form-check">
+                <input [className]="siteVitrine_domaineNameQueryIsCorrect ? 'form-control' : 'form-control is-invalid'"
+                    type="text" placeholder="Exemple: monnomdedomaine.fr" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_domaineNameWanted" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}"
+                    (input)="onDomaineNameCheckAvailability($event.target.value)" />
+            </div>
+
+            <!-- Vous avez deja un nom de domaine, entrez le nous -->
+            <div *ngIf="siteVitrine_IWishAnHosting == true && siteVitrine_IGetADomaineName == true" class="form-check">
+
+                <input [className]="siteVitrine_domaineNameQueryIsCorrect ? 'form-control' : 'form-control is-invalid'"
+                    type="text" placeholder="Entrez votre nom de domaine" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_clientDomainName" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}"
+                    (input)="onDomaineNameCheckAvailability($event.target.value)" />
+            </div>
+
+
+            <!-- Vous avez deja un nom de domaine, et un acces à ses registres DNS -->
+            <div *ngIf="siteVitrine_IGetADomaineName == true && siteVitrine_IWishAnHosting == true" class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                    [(ngModel)]="siteVitrine_IGetAccessToMyDNSService" (change)="updateForm()"
+                    [ngModelOptions]="{standalone: true}" />
+                <label class="form-check-label" for="exampleCheck1">J'ai accès à mon interface auprès de mon hébergeur
+                    pour les registres DNS</label>
+            </div>
+
+
+            <div *ngIf="siteVitrine_IKnowWhichDomainNameIWant == false && siteVitrine_IWishAnHosting == true"
+                class="form-check">
+                <input class="form-control" type="text" placeholder="Entrez des mots séparés par des espaces"
+                    id="exampleCheck1" [(ngModel)]="siteVitrine_domaineNameUnknownWords"
+                    (input)="onDomainNameProposal($event.target.value)" [ngModelOptions]="{standalone: true}" />
+            </div>
+
+            <div *ngIf="siteVitrine_IKnowWhichDomainNameIWant == false 
+                        && siteVitrine_IWishAnHosting == true 
+                        && siteVitrine_canSplitDomaineNameWantedProposal" class="form-check">
+                <ul>
+                    <div *ngFor="let proposal of siteVitrine_unknownDomaineNameWantedProposal;let index = index;">
+                        <div *ngIf="index == 0">
+                            <input type="radio" id="huey" name="drone" value="choice{{index}}_{{ proposal }}" checked
+                                [(ngModel)]="siteVitrine_domainNameProposal" [ngModelOptions]="{standalone: true}"
+                                (change)="updateForm()">
+                            <label for="huey">{{ proposal }}</label>
+                        </div>
+
+                        <div *ngIf="index > 0">
+                            <input type="radio" id="huey" name="drone" value="choice{{index}}_{{ proposal }}"
+                                [(ngModel)]="siteVitrine_domainNameProposal" [ngModelOptions]="{standalone: true}"
+                                (change)="updateForm()">
+                            <label for="huey">{{ proposal }}</label>
+                        </div>
+
+                    </div>
+
+
+
+                </ul>
+            </div>
+
+
+
+
+            <div *ngIf="siteVitrine_domaineNameQueryIsCorrect == true" class="row">
+                <div (click)="selectHostingProvider('ovh')" class="col-sm-4 interactiveCard">
+                    <div [className]="siteVitrine_hostingProvider == 'ovh' ? 'card selCard' : 'card'">
+                        <div class="card-body">
+                            <img src="assets/img/devis/hostingProvider/Logo-OVH.svg" class="card-img-top" alt="...">
+
+                            <h4 class="card-title">OVH</h4>
+                            <h6>De 1€79 à 7€19/mois</h6>
+                            <p class="card-text">OVH propose des offres de qualités avec des comptes mails en plus.</p>
+                            <div *ngIf="siteVitrine_hostingProvider != 'ovh'">
+                                <a (click)="selectHostingProvider('ovh')"
+                                    class="btn btn-primary btn-hostingProvider">Sélectionner</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div (click)="selectHostingProvider('lws')" class="col-sm-4 interactiveCard">
+                    <div [className]="siteVitrine_hostingProvider == 'lws' ? 'card selCard' : 'card'">
+                        <div class="card-body">
+                            <img src="assets/img/devis/hostingProvider/lws.png" class="card-img-top" alt="...">
+
+                            <h4 class="card-title">LWS</h4>
+                            <h6>De 1€79 à 4€19/mois</h6>
+
+                            <p class="card-text">LWS est un compromis entre qualité/support et tarif
+                            </p>
+                            <div *ngIf="siteVitrine_hostingProvider != 'lws'">
+                                <a (click)="selectHostingProvider('lws')"
+                                    class="btn btn-primary btn-hostingProvider">Sélectionner</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div (click)="selectHostingProvider('bigrock')" class="col-sm-4 interactiveCard">
+                    <div [className]="siteVitrine_hostingProvider == 'bigrock' ? 'card selCard' : 'card'">
+                        <div class="card-body">
+                            <img src="assets/img/devis/hostingProvider/bigrock.jpg" class="card-img-top" alt="...">
+
+
+                            <h4 class="card-title">Bigrock</h4>
+                            <h6>De 1€44 à 2€15/mois</h6>
+
+                            <p class="card-text">BigRock propose un hébergement low-cost et performant
+                            </p>
+                            <div *ngIf="siteVitrine_hostingProvider != 'bigrock'">
+                                <a (click)="selectHostingProvider('bigrock')"
+                                    class="btn btn-primary btn-hostingProvider">Sélectionner</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div *ngIf="siteVitrine_domaineNameQueryIsCorrect == true" class="row">
+                <div *ngIf="siteVitrine_hostingProvider == 'ovh'">
+                    <button [className]="hostingOffre == 'ovh_kimsufi' ? 'btn btn-primary' : 'btn btn-light'"
+                        (click)="selectHostingOffre('ovh_kimsufi')"> Kimsufi</button>
+                    <button [className]="hostingOffre == 'ovh_perso' ? 'btn btn-primary' : 'btn btn-light'"
+                        (click)="selectHostingOffre('ovh_perso')"> Perso</button>
+                    <button [className]="hostingOffre == 'ovh_pro' ? 'btn btn-primary' : 'btn btn-light'"
+                        (click)="selectHostingOffre('ovh_pro')"> Pro</button>
+                </div>
+
+                <div *ngIf="siteVitrine_hostingProvider == 'lws'">
+                    <button [className]="hostingOffre == 'lws_perso' ? 'btn btn-primary' : 'btn btn-light'"
+                        (click)="selectHostingOffre('lws_perso')"> Perso</button>
+                    <button [className]="hostingOffre == 'lws_starter' ? 'btn btn-primary' : 'btn btn-light'"
+                        (click)="selectHostingOffre('lws_starter')"> Starter</button>
+                </div>
+
+                <div *ngIf="siteVitrine_hostingProvider == 'bigrock'">
+                    <button [className]="hostingOffre == 'bigrock_starter' ? 'btn btn-primary' : 'btn btn-light'"
+                        (click)="selectHostingOffre('bigrock')"> Starter</button>
+                </div>
+
+
+            </div>
+
+
+            <div *ngIf="siteVitrine_domaineNameQueryIsCorrect == true" class="row">
+                <div *ngIf="siteVitrine_hostingProvider == 'ovh'">
+
+                    <select [(ngModel)]="hostingYears" [ngModelOptions]="{standalone: true}" (change)="updateForm()"
+                        id="hostingYears">
+                        <option selected value="1">1 Year</option>
+                        <option value="2">2 Years</option>
+                        <option value="3">3 Years</option>
+                        <option value="4">5 Years</option>
+                        <option value="10">10 Years</option>
+                    </select>
+
+
+                </div>
+
+                <div *ngIf="siteVitrine_hostingProvider == 'lws'">
+                    <select [(ngModel)]="hostingYears" [ngModelOptions]="{standalone: true}" (change)="updateForm()"
+                        id="hostingYears">
+                        <option selected value="1">1 Year</option>
+                        <option value="2">2 Years</option>
+                        <option value="3">3 Years</option>
+                        <option value="5">5 Years</option>
+                        <option value="10">10 Years</option>
+                    </select>
+                </div>
+
+                <div *ngIf="siteVitrine_hostingProvider == 'bigrock'">
+                    <select [(ngModel)]="hostingYears" [ngModelOptions]="{standalone: true}" (change)="updateForm()"
+                        id="hostingYears">
+                        <option value="1">1 Year</option>
+                        <option value="2">2 Years</option>
+                        <option value="3">3 Years</option>
+                        <option value="5">5 Years</option>
+                        <option value="10">10 Years</option>
+                    </select>
+                </div>
+
+
+            </div>
+
+
+            <div *ngIf="siteVitrine_domaineNameQueryIsCorrect == true">
+
+                <app-quotation-total quotationAmount="{{quotationAmount}}" quotationStep="{{quotationStep}}"
+                    quotationType="{{quotationType}}" hostingAmount="{{hostingAmount}}"></app-quotation-total>
+
+            </div>
+
+
+
+
+        </form>
+
+
+
+
+
+
+
+    </div>
+
+
+    <div *ngIf="siteVitrine_thirdStepValidated == true" class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Suivant</button>
+    </div>
+
+    <div *ngIf="siteVitrine_thirdStepValidated != true" class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')"
+            disabled>Suivant</button>
+    </div>
+
+
+</div>
+
+
+<div *ngIf="name == 'SiteVitrine-RecuperationInformationsClient'">
+
+    <div class="modal-header">
+        <h4 class="modal-title">Site vitrine</h4><small>Etape 4/4 : Récupération Informations Client
+            des options</small>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form>
+
+            <input [className]="infosClient_validateMail ? 'form-control' : 'form-control is-invalid'" type="text"
+                placeholder="Votre adresse mail" id="exampleCheck1" [(ngModel)]="infosClient_mail"
+                (change)="updateForm()" [ngModelOptions]="{standalone: true}"
+                (input)="onMailValidation($event.target.value)" />
+
+
+            <input [className]="infosClient_validatePhone ? 'form-control' : 'form-control is-invalid'" type="text"
+                placeholder="Votre téléphone" id="exampleCheck1" [(ngModel)]="infosClient_telephone"
+                (change)="updateForm()" [ngModelOptions]="{standalone: true}"
+                (input)="onPhoneValidation($event.target.value)" />
+
+            <div *ngIf="siteVitrine_fourthStepValidated == true" class="">
+
+                <h5>Et maintenant ? </h5>
+
+                <p>
+                    Cliquez sur le bouton Envoi pour recevoir votre devis par mail. Ce devis ne vous engage en rien.
+                    Nous vons enverrons
+                    une requête de paiement d'un accompte de 25% pour démarrer les travaux.
+                    <b>A bientôt sur Miseo ! </b>
+
+                </p>
+
+            </div>
+
+
+
+            <app-quotation-total quotationAmount="{{quotationAmount}}" quotationStep="{{quotationStep}}"
+                quotationType="{{quotationType}}" hostingAmount="{{hostingAmount}}"></app-quotation-total>
+
+
+
+        </form>
+    </div>
+
+    <div *ngIf="siteVitrine_fourthStepValidated == true" class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="submitQuotation()">Envoi</button>
+    </div>
+
+    <div *ngIf="siteVitrine_fourthStepValidated != true" class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="submitQuotation()"
+            disabled>Envoi</button>
+    </div>
+
+
+</div>
