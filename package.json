@@ -27,7 +27,7 @@
     "firebase": "^6.6.0",
     "firebaseui": "^4.2.0",
     "firebaseui-angular": "^4.0.0",
-    "nodemailer": "^6.3.0",
+    "nodemailer": "^6.4.16",
     "rxjs": "^6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
